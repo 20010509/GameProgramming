@@ -2,12 +2,13 @@
 #include "glew.h"
 #include "glut.h"
 #include "GLFW/glfw3.h"
-#include "Update.h"
-
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
+#include "main.h"
+#include "CSceneManager.h"
 
 bool InitFlg = true;
+
+//シーンマネージャのインスタンス
+CSceneManager SceneManager;
 
 /* display関数
 1秒間に60回実行される
@@ -21,11 +22,11 @@ void display() {
 	glLoadIdentity();
 
 	if (InitFlg) {
-		Init();
+		SceneManager.Init();
 		InitFlg = false;
 	}
 	else {
-		Update();
+		SceneManager.Update();
 	}
 
 }
@@ -110,7 +111,7 @@ int main(void)
 
 	// ウィンドウのサイズ変更時に呼び出す処理の登録
 	glfwSetWindowSizeCallback(window, reshape);
-	reshape(window, 800, 600);
+	reshape(window, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	//ライトの設定（3D必要 2D不要）
 	//固定シェーダー用

@@ -27,7 +27,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>NotSet</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -68,11 +68,10 @@
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <Optimization>Disabled</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -99,9 +98,9 @@
     <ClCompile Include="CMaterial.cpp" />
     <ClCompile Include="CMatrix.cpp" />
     <ClCompile Include="CModel.cpp" />
-    <ClCompile Include="CObstacle.cpp" />
-    <ClCompile Include="CObstacle2.cpp" />
+    <ClCompile Include="CModelX.cpp" />
     <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="CRes.cpp" />
     <ClCompile Include="CSceneGame.cpp" />
     <ClCompile Include="CSceneManager.cpp" />
     <ClCompile Include="CSound.cpp" />
@@ -112,7 +111,6 @@
     <ClCompile Include="CTriangle.cpp" />
     <ClCompile Include="CUtil.cpp" />
     <ClCompile Include="CVector.cpp" />
-    <ClCompile Include="Update.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -132,9 +130,9 @@
     <ClInclude Include="CMaterial.h" />
     <ClInclude Include="CMatrix.h" />
     <ClInclude Include="CModel.h" />
-    <ClInclude Include="CObstacle.h" />
-    <ClInclude Include="CObstacle2.h" />
+    <ClInclude Include="CModelX.h" />
     <ClInclude Include="CPlayer.h" />
+    <ClInclude Include="CRes.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneGame.h" />
     <ClInclude Include="CSceneManager.h" />
@@ -147,7 +145,7 @@
     <ClInclude Include="CTriangle.h" />
     <ClInclude Include="CUtil.h" />
     <ClInclude Include="CVector.h" />
-    <ClInclude Include="Update.h" />
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

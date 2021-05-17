@@ -1,5 +1,16 @@
-#include"CCharacter.h"
-#include"CTaskManager.h"
+#include "CCharacter.h"
+#include "CTaskManager.h"
+
+//描画処理
+void CCharacter::Render()
+{
+	mpModel->Render(mMatrix);
+}
+
+CCharacter::~CCharacter() {
+	//タスクリストから削除
+	CTaskManager::Get()->Remove(this);
+}
 
 CCharacter::CCharacter()
 :mTag(EZERO)
@@ -8,13 +19,3 @@ CCharacter::CCharacter()
 	CTaskManager::Get()->Add(this);
 }
 
-//描画処理
-void CCharacter::Render()
-{
-	mpModel->Render(mMatrix);
-}
-
-CCharacter::~CCharacter(){
-	//タスクリストから削除
-	CTaskManager::Get()->Remove(this);
-}
