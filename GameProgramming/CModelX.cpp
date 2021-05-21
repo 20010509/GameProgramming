@@ -310,7 +310,7 @@ void CMesh::Render(){
 	for (int i = 0; i < mFaceNum; i++){
 		//マテリアルを適用する
 		mMaterial[mpMaterialIndex[i]]->Enabled();
-		glDrawElements(GL_TRIANGLES, 3 * mFaceNum, GL_UNSIGNED_INT, mpVertexIndex);
+		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (mpVertexIndex + i * 3));
 	}
 
 	/*頂点データ、法線データの配列を無効にする*/

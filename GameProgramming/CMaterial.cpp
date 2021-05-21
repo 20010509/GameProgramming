@@ -6,7 +6,7 @@
 //デフォルトコンストラクタ
 CMaterial::CMaterial()
 :mVertexNum(0)
-, mpTextureFilename(0)
+, mpTextureFilename(nullptr)
 {
 	//名前を0で埋め
 	memset(mName, 0, sizeof(mName));
@@ -56,13 +56,14 @@ void CMaterial::Disabled()
 Materialデータの読み込みと設定
 */
 CMaterial::CMaterial(CModelX *model)
-:mpTextureFilename(0)
+:mpTextureFilename(nullptr)
 {
 	model->GetToken();	// { ? Name
 	if (strcmp(model->mToken, "{") != 0){
 		//{でないときはマテリアル名
-		strcmp(mName, model->mToken);
+		strcpy(mName, model->mToken);
 		model->GetToken();	// {
+		printf("%s\n",mName);
 	}
 
 	mDiffuse[0] = model->GetFloatToken();
@@ -91,8 +92,7 @@ CMaterial::CMaterial(CModelX *model)
 		model->GetToken();	// }
 		model->GetToken();	// }
 	}
-	printf("Material\n");
-
+	
 	printf("Diffuse:");
 	printf("%9f %8f %8f %8f \n", mDiffuse[0], mDiffuse[1], mDiffuse[2], mDiffuse[3]);
 
