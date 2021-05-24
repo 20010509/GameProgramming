@@ -387,7 +387,7 @@ CSkinWeights::CSkinWeights(CModelX *model)
 CAnimationSet
 */
 CAnimationSet::CAnimationSet(CModelX *model)
-:mpName(nullptr)
+	:mpName(nullptr)
 {
 	model->mAnimationSet.push_back(this);
 	model->GetToken();		//Animation Name
