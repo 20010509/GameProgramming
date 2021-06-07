@@ -17,6 +17,18 @@ class CModelX;	//CModelXクラスの宣言
 class CMaterial;	//クラスの宣言
 
 /*
+CAnimationKey
+アニメーションキークラス
+*/
+class CAnimationKey{
+public:
+	//時間
+	float mTime;
+	//行列
+	CMatrix mMatrix;
+};
+
+/*
 CAnimation
 アニメーションクラス
 */
@@ -29,7 +41,11 @@ public:
 
 	~CAnimation(){
 		SAFE_DELETE_ARRAY(mpFrameName);
+		SAFE_DELETE_ARRAY(mpKey);
 	}
+
+	int mKeyNum;	//キー数(時間数)
+	CAnimationKey *mpKey;	//キー配列
 };
 
 /*

@@ -39,6 +39,9 @@ public:
 	//CMatrix * CMatrix の演算結果を返す
 	CMatrix operator*(const CMatrix &m);
 
+	//クオータニオンで回転行列を設定する
+	CMatrix SetQuaternion(float x, float y, float z, float w);
+
 };
 #endif
 
