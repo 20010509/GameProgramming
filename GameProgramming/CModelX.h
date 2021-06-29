@@ -36,6 +36,8 @@ class CAnimation{
 public:
 	char *mpFrameName;	//フレーム
 	int mFrameIndex;	//フレーム番号
+	int mKeyNum;	//キー数(時間数)
+	CAnimationKey *mpKey;	//キー配列
 
 	CAnimation(CModelX *model);
 
@@ -43,9 +45,6 @@ public:
 		SAFE_DELETE_ARRAY(mpFrameName);
 		SAFE_DELETE_ARRAY(mpKey);
 	}
-
-	int mKeyNum;	//キー数(時間数)
-	CAnimationKey *mpKey;	//キー配列
 };
 
 /*
@@ -69,6 +68,10 @@ public:
 
 	//アニメーション
 	std::vector<CAnimation*> mAnimation;
+
+	float mTime;	//現在時間
+	float mWeight;	//重み
+	float mMaxTime;	//最大時間
 };
 
 /*
@@ -143,6 +146,10 @@ public:
 	CMatrix mTransformMatrix;	//変換行列
 	char* mpName;		//フレーム名前
 	int mIndex;			//フレーム番号
+
+	CMatrix mCombinedMatrix; //合成行列
+	//合成行列の作成
+	void AnimateCombined(CMatrix* parent);
 	//コンストラクタ
 	CModelXFrame(CModelX* model);
 	//デストラクタ
@@ -202,6 +209,8 @@ public:
 
 	//フレーム名に該当するフレームのアドレスを返す
 	CModelXFrame* FindFrame(char* name);
+
+	void AnimateFrame();
 };
 
 #endif
