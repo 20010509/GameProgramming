@@ -108,6 +108,8 @@ public:
 	int mMaterialNum;	//マテリアル数
 	int mMaterialIndexNum;	//マテリアル番号数(関数)
 	int *mpMaterialIndex;	//マテリアル番号
+	//テクスチャ座標データ
+	float *mpTextureCoords;
 	CVector *mpAnimateVertex;	//アニメーション用頂点
 	CVector *mpAnimateNormal;	//アニメーション用法線
 	std::vector<CMaterial*>mMaterial;	//マテリアルデータ
@@ -126,6 +128,7 @@ public:
 		, mpMaterialIndex(nullptr)
 		, mpAnimateVertex(nullptr)
 		, mpAnimateNormal(nullptr)
+		, mpTextureCoords(nullptr)
 	{}
 	//デストラクタ
 	~CMesh(){
@@ -135,6 +138,7 @@ public:
 		SAFE_DELETE_ARRAY(mpMaterialIndex);
 		SAFE_DELETE_ARRAY(mpAnimateVertex);
 		SAFE_DELETE_ARRAY(mpAnimateNormal);
+		SAFE_DELETE_ARRAY(mpTextureCoords);
 		//スキンウェイトの削除
 		for (int i = 0; i < mSkinWeights.size(); i++){
 			delete mSkinWeights[i];

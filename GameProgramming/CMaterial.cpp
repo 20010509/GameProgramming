@@ -65,7 +65,7 @@ CMaterial::CMaterial(CModelX *model)
 		//{‚Å‚È‚¢‚Æ‚«‚Íƒ}ƒeƒŠƒAƒ‹–¼
 		strcpy(mName, model->mToken);
 		model->GetToken();	// {
-		printf("%s\n",mName);
+		/*printf("%s\n",mName);*/
 	}
 
 	mDiffuse[0] = model->GetFloatToken();
@@ -98,7 +98,7 @@ CMaterial::CMaterial(CModelX *model)
 		model->GetToken();	// }
 		model->GetToken();	// }
 	}
-	
+	/*
 	printf("Diffuse:");
 	printf("%9f %8f %8f %8f \n", mDiffuse[0], mDiffuse[1], mDiffuse[2], mDiffuse[3]);
 
@@ -110,4 +110,5 @@ CMaterial::CMaterial(CModelX *model)
 
 	printf("Emissive:");
 	printf("%9f %8f %8f \n", mEmissive[0], mEmissive[1], mEmissive[2]);
+	*/
 }
