@@ -58,6 +58,8 @@ Materialデータの読み込みと設定
 CMaterial::CMaterial(CModelX *model)
 :mpTextureFilename(nullptr)
 {
+	//CModelXにマテリアルを追加する
+	model->mMaterial.push_back(this);
 	model->GetToken();	// { ? Name
 	if (strcmp(model->mToken, "{") != 0){
 		//{でないときはマテリアル名
@@ -89,6 +91,10 @@ CMaterial::CMaterial(CModelX *model)
 		model->GetToken();	//filename
 		mpTextureFilename = new char[strlen(model->mToken) + 1];
 		strcpy(mpTextureFilename, model->mToken);
+
+		//テクスチャファイルの読み込み
+		mTexture.Load(mpTextureFilename);
+
 		model->GetToken();	// }
 		model->GetToken();	// }
 	}

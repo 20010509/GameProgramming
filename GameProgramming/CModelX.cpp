@@ -34,8 +34,16 @@ void CModelX::Load(char *file){
 	//文字列の最後まで繰り返し
 	while (*mpPointer != '\0'){
 		GetToken();		//単語の取得
+		//template 読み飛ばし
+		if (strcmp(mToken, "template") == 0){
+			SkipNode();
+		}
+		//Materialの時
+		else if (strcmp(mToken, "Material") == 0){
+			new CMaterial(this);
+		}
 		//単語がFrameの場合
-		if (strcmp(mToken, "Frame") == 0){
+		else if (strcmp(mToken, "Frame") == 0){
 			//フレームを作成する
 			new CModelXFrame(this);
 		}
@@ -282,6 +290,12 @@ void CMesh::Init(CModelX *model){
 				model->GetToken();	//Material
 				if (strcmp(model->mToken, "Material") == 0){
 					mMaterial.push_back(new CMaterial(model));
+				}
+				else{
+					// { 既出
+					model->GetToken();	//MaterialName
+					mMaterial.push_back(model->FindMaterial(model->mToken));
+					model->GetToken();	// }
 				}
 			}
 			model->GetToken();	// } //End of MeshMaterialList
@@ -611,8 +625,10 @@ void CModelX::AnimateFrame(){
 					}
 				}
 			}
+			/*
 			printf("Frame:%s\n", frame->mpName);
 			animation->mpKey[45].mMatrix.Print();
+			*/
 		}
 	}
 }
@@ -628,8 +644,10 @@ void CModelXFrame::AnimateCombined(CMatrix* parent){
 	for (int i = 0; i < mChild.size(); i++){
 		mChild[i]->AnimateCombined(&mCombinedMatrix);
 	}
+	/*
 	printf("Frame:%s\n", mpName);
 	mCombinedMatrix.Print();
+	*/
 }
 
 /*
@@ -693,4 +711,22 @@ void CModelX::AnimateVertex(){
 			mFrame[i]->mMesh.AnimateVertex(this);
 		}
 	}
+}
+
+/*
+FindMaterial
+マテリアル名に該当するマテリアルを返却する
+*/
+CMaterial* CModelX::FindMaterial(char* name){
+	//マテリアル配列のイテレータ作成
+	std::vector<CMaterial*>::iterator itr;
+	//マテリアル配列を戦闘から順に検索
+	for (itr = mMaterial.begin(); itr != mMaterial.end(); itr++){
+		//名前が一致すればマテリアルのポインタを返却
+		if (strcmp(name, (*itr)->mName) == 0){
+			return *itr;
+		}
+	}
+	//無い時はNULLを返却
+	return NULL;
 }
