@@ -20,21 +20,17 @@ void CSceneGame::Init() {
 	//3Dモデルファイルの読み込み
 	CRes::sModelX.Load(MODEL_FILE);
 	//キャラクターにモデルを設定
-	mCharacter.Init(&CRes::sModelX);
+	mPlayer.Init(&CRes::sModelX);
 	//テキストフォントの読み込みと設定
 	mFont.LoadTexture("FontG.tga", 1, 4096 / 64);
-	i = mCharacter.mAnimationIndex;
 }
 
 
 void CSceneGame::Update() {
 	//歩くアニメーションに切り替える
-	if (mCharacter.mAnimationFrameSize <= mCharacter.mAnimationFrame){
-		i++;
-		mCharacter.ChangeAnimation(i, true, 60);
-	}
+
 	//キャラクタークラスの更新
-	mCharacter.Update(CMatrix());
+	mPlayer.Update();
 
 	//カメラのパラメータを作成する
 	CVector e, c, u;//視点、注視点、上方向
@@ -70,7 +66,7 @@ void CSceneGame::Update() {
 
 	//モデル描画
 	//CRes::sModelX.Render();
-	mCharacter.Render();
+	mPlayer.Render();
 	/*
 	//テクスチャテスト
 	CRes::sModelX.mMaterial[0]->mTexture.DrawImage(-5, 5, -5, 5, 0, 128, 128, 0);
