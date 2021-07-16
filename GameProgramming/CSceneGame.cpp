@@ -10,6 +10,8 @@
 
 #include "CMaterial.h"
 
+#include "CCollisionManager.h"
+
 CMatrix Matrix;
 
 CSceneGame::~CSceneGame() {
@@ -75,6 +77,8 @@ void CSceneGame::Update() {
 	//ƒ‚ƒfƒ‹•`‰æ
 	//CRes::sModelX.Render();
 	mPlayer.Render();
+	//ƒRƒ‰ƒCƒ_‚Ì•`‰æ
+	CCollisionManager::Get()->Render();
 	//“G•`‰æ
 	mEnemy.Render();
 	/*
