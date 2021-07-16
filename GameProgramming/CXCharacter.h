@@ -22,6 +22,12 @@ public:
 	void Render();
 	void Update();
 	CXCharacter();
+
+	CMatrix *mpCombinedMatrix;	//‡¬s—ñ‘Ş”ğ
+
+	virtual ~CXCharacter(){
+		SAFE_DELETE_ARRAY(mpCombinedMatrix);
+	}
 };
 
 #endif

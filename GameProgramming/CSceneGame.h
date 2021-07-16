@@ -3,6 +3,7 @@
 #include "CScene.h"
 #include "CXCharacter.h"
 #include "CXPlayer.h"
+#include "CXEnemy.h"
 
 /*
 ゲームのシーン
@@ -18,6 +19,9 @@ public:
 
 	//キャラクタのインスタンス
 	CXPlayer mPlayer;
+
+	//敵のインスタンス
+	CXEnemy mEnemy;
 };
 
 #endif

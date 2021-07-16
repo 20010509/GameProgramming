@@ -21,6 +21,11 @@ void CSceneGame::Init() {
 	CRes::sModelX.Load(MODEL_FILE);
 	//キャラクターにモデルを設定
 	mPlayer.Init(&CRes::sModelX);
+
+	//敵の初期設定
+	mEnemy.Init(&CRes::sModelX);
+	//敵の配置
+	mEnemy.mPosition = CVector(7.0f, 0.0f, 0.0f);
 	//テキストフォントの読み込みと設定
 	mFont.LoadTexture("FontG.tga", 1, 4096 / 64);
 }
@@ -31,6 +36,9 @@ void CSceneGame::Update() {
 
 	//キャラクタークラスの更新
 	mPlayer.Update();
+
+	//敵の更新処理
+	mEnemy.Update();
 
 	//カメラのパラメータを作成する
 	CVector e, c, u;//視点、注視点、上方向
@@ -67,6 +75,8 @@ void CSceneGame::Update() {
 	//モデル描画
 	//CRes::sModelX.Render();
 	mPlayer.Render();
+	//敵描画
+	mEnemy.Render();
 	/*
 	//テクスチャテスト
 	CRes::sModelX.mMaterial[0]->mTexture.DrawImage(-5, 5, -5, 5, 0, 128, 128, 0);
