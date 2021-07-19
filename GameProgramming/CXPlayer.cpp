@@ -6,7 +6,7 @@ void CXPlayer::Init(CModelX* model){
 	//‡¬s—ñ‚Ìİ’è
 	mColSphereBody.mpMatrix = &mpCombinedMatrix[8];
 	//“ª
-	mColSphereHand.mpMatrix = &mpCombinedMatrix[11];
+	mColSphereHead.mpMatrix = &mpCombinedMatrix[11];
 	//Œ•
 	mColSphereSword.mpMatrix = &mpCombinedMatrix[21];
 }

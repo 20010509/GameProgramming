@@ -5,7 +5,27 @@ void CXEnemy::Init(CModelX* model){
 	//合成行列の設定
 	mColSphereBody.mpMatrix = &mpCombinedMatrix[8];
 	//頭
-	mColSphereHand.mpMatrix = &mpCombinedMatrix[11];
+	mColSphereHead.mpMatrix = &mpCombinedMatrix[11];
 	//剣
 	mColSphereSword.mpMatrix = &mpCombinedMatrix[21];
+}
+
+void CXEnemy::Collision(CCollider *m, CCollider *o){
+	//自分のコライダのタイプが球のとき
+	if (m->mType == CCollider::ESPHERE){
+		//相手のコライダのタイプが球のとき
+		if (o->mType == CCollider::ESPHERE){
+			//相手のコライダの親がプレイヤーのとき
+			if (o->mpParent->mTag == EPLAYER){
+				//相手のコライダが剣のとき
+				if (o->mTag == CCollider::ESWORD){
+					//自分と相手のコライダが衝突しているとき
+					if (CCollider::Collision(m, o)){
+						//30フレームかけてダウンし、繰り返しなし
+						ChangeAnimation(11, false, 30);
+					}
+				}
+			}
+		}
+	}
 }

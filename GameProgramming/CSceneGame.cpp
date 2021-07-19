@@ -81,6 +81,10 @@ void CSceneGame::Update() {
 	CCollisionManager::Get()->Render();
 	//敵描画
 	mEnemy.Render();
+
+	//衝突処理
+	CCollisionManager::Get()->Collision();
+
 	/*
 	//テクスチャテスト
 	CRes::sModelX.mMaterial[0]->mTexture.DrawImage(-5, 5, -5, 5, 0, 128, 128, 0);
