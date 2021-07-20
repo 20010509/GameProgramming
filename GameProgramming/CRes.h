@@ -6,6 +6,8 @@ class CRes{
 public:
 	//モデルクラスのインスタンス作成
 	static CModelX sModelX;
+
+	static CModelX sKnight;
 };
 
 #endif

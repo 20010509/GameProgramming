@@ -177,6 +177,10 @@ public:
 	}
 	CMesh mMesh;	//Meshデータ
 	void Render();
+
+	CModelXFrame()
+		:mpName(nullptr)
+		, mIndex(0){}	//コンストラクタ
 };
 
 /*

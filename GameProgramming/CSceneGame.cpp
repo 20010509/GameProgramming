@@ -24,10 +24,14 @@ void CSceneGame::Init() {
 	//キャラクターにモデルを設定
 	mPlayer.Init(&CRes::sModelX);
 
+	//3Dモデルファイルの読み込み
+	CRes::sKnight.Load("Knight\\knight_low.x");
 	//敵の初期設定
-	mEnemy.Init(&CRes::sModelX);
+	mEnemy.Init(&CRes::sKnight);
 	//敵の配置
 	mEnemy.mPosition = CVector(7.0f, 0.0f, 0.0f);
+	mEnemy.mAnimationFrameSize = 1024;
+
 	//テキストフォントの読み込みと設定
 	mFont.LoadTexture("FontG.tga", 1, 4096 / 64);
 }
