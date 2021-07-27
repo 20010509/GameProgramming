@@ -3,11 +3,13 @@
 void CXEnemy::Init(CModelX* model){
 	CXCharacter::Init(model);
 	//çáê¨çsóÒÇÃê›íË
-	mColSphereBody.mpMatrix = &mpCombinedMatrix[8];
+	mColSphereBody.mpMatrix = &mpCombinedMatrix[1];
 	//ì™
-	mColSphereHead.mpMatrix = &mpCombinedMatrix[11];
+	mColSphereHead.mpMatrix = &mpCombinedMatrix[1];
 	//åï
-	mColSphereSword.mpMatrix = &mpCombinedMatrix[21];
+	mColSphereSword0.mpMatrix = &mpCombinedMatrix[26];
+	mColSphereSword1.mpMatrix = &mpCombinedMatrix[26];
+	mColSphereSword2.mpMatrix = &mpCombinedMatrix[26];
 }
 
 void CXEnemy::Collision(CCollider *m, CCollider *o){

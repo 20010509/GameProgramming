@@ -14,7 +14,7 @@ void CXPlayer::Init(CModelX* model){
 void CXPlayer::Update(){
 
 	//UŒ‚
-	if (CKey::Once(VK_SPACE)){
+	if (CKey::Once(VK_SPACE) && mAnimationIndex == 0){
 		ChangeAnimation(3, false, 30);
 	}
 	if (mAnimationIndex == 3 && mAnimationFrame >= mAnimationFrameSize){

@@ -41,6 +41,8 @@ public:
 
 	CAnimation(CModelX *model);
 
+	CAnimation(){}
+
 	~CAnimation(){
 		SAFE_DELETE_ARRAY(mpFrameName);
 		SAFE_DELETE_ARRAY(mpKey);
@@ -57,6 +59,8 @@ public:
 	char *mpName;
 
 	CAnimationSet(CModelX *model);
+
+	CAnimationSet(){}
 
 	~CAnimationSet(){
 		SAFE_DELETE_ARRAY(mpName);
@@ -244,6 +248,15 @@ public:
 	CMaterial* FindMaterial(char* name);
 
 	void AnimateVertex(CMatrix*);
+
+	/*
+	アニメーションを抜き出す
+	idx:分割したいアニメーションセットの番号
+	start:分割したいアニメーションの開始時間
+	end:分割したいアニメーションの終了時間
+	name:追加するアニメーションセットの名前
+	*/
+	void CModelX::SeparateAnimationSet(int idx, int start, int end, char *name);
 };
 
 #endif
